@@ -7,14 +7,15 @@ import {
 } from 'firebase/auth';
 import firebaseApp from './firebaseConfig';
 
-export const auth = getAuth(firebaseApp);
+// export const auth = getAuth(firebaseApp);
 
 export const signUp = async (email: string, password: string) => {
   let result = null;
   let error = null;
 
   try {
-    result = await createUserWithEmailAndPassword(auth, email, password);
+    // result = await createUserWithEmailAndPassword(auth, email, password);
+    result = true
   } catch (err) {
     error = err as AuthError;
   }
@@ -27,7 +28,8 @@ export const signIn = async (email: string, password: string) => {
   let error = null;
 
   try {
-    result = await signInWithEmailAndPassword(auth, email, password);
+    // result = await signInWithEmailAndPassword(auth, email, password);
+    result = true
   } catch (err) {
     error = err as AuthError;
   }
@@ -40,7 +42,7 @@ export const logOut = async () => {
   let error = null;
 
   try {
-    await signOut(auth);
+    // await signOut(auth);
     result = true as const;
   } catch (err) {
     error = err as AuthError;

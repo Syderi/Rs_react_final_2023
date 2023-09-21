@@ -17,8 +17,9 @@ interface ILayoutProps {
 
 const Layout: FC<ILayoutProps> = ({ children }) => {
   const router = useRouter();
-  const { isAuth } = useAppSelector((state) => state.auth);
-  const auth = getAuth();
+  // const { isAuth } = useAppSelector((state) => state.auth);
+  // const auth = getAuth();
+  const isAuth = true;
   const dispatch = useAppDispatch();
   const [authTouched, setAuthTouched] = useState(false);
   const { pathname } = useRouter();
@@ -39,10 +40,11 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
   }, [authTouched, isAuth, privateRoute, router]);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    // onAuthStateChanged(auth, (user) => {
       setAuthTouched(true);
-      dispatch(setUser({ isAuth: !!user, userEmail: user?.email }));
-    });
+      // dispatch(setUser({ isAuth: !!user, userEmail: user?.email }));
+      dispatch(setUser({ isAuth: true, userEmail: "email@gmail.ru" }));
+    // });
   });
 
   const fullWidthStyle = pathname === '/graphi' ? { width: '90%' } : {};
